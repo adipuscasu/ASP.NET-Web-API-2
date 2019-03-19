@@ -3,7 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET-Web-API-2", "ASP.NET-Web-API-2\ASP.NET-Web-API-2.csproj", "{95ED0696-F772-4764-BE0A-4519BC99324E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP.NET-Web-API-2.Service", "ASP.NET-Web-API-2\ASP.NET-Web-API-2.Service.csproj", "{95ED0696-F772-4764-BE0A-4519BC99324E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET-Web-API-2.DataAccess", "ASP.NET-Web-API-2.DataAccess\ASP.NET-Web-API-2.DataAccess.csproj", "{7F20B198-0662-4BA0-ABD2-0B62B01B7052}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB.Scripts", "DB.Scripts", "{125FC7DE-C44F-4792-9B71-EAF251833F86}"
+	ProjectSection(SolutionItems) = preProject
+		ASP.NET-Web-API-2.SP.sql = ASP.NET-Web-API-2.SP.sql
+		ASP.NET-Web-API-2.sql = ASP.NET-Web-API-2.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET-Web-API-2.DataModel", "ASP.NET-Web-API-2.DataModel\ASP.NET-Web-API-2.DataModel.csproj", "{42E5BC21-33F5-4188-B94B-82CA3000E859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET-Web-API-2.DomainLogic", "ASP.NET-Web-API-2.DomainLogic\ASP.NET-Web-API-2.DomainLogic.csproj", "{14DB39ED-3AF8-4A46-9A45-F6CDF68E345B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET-Web-API-2.SecurityUtils", "ASP.NET-Web-API-2.SecurityUtils\ASP.NET-Web-API-2.SecurityUtils.csproj", "{B5B9AF39-678B-4BD4-887D-842F40A3646A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +29,22 @@ Global
 		{95ED0696-F772-4764-BE0A-4519BC99324E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95ED0696-F772-4764-BE0A-4519BC99324E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95ED0696-F772-4764-BE0A-4519BC99324E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F20B198-0662-4BA0-ABD2-0B62B01B7052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F20B198-0662-4BA0-ABD2-0B62B01B7052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F20B198-0662-4BA0-ABD2-0B62B01B7052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F20B198-0662-4BA0-ABD2-0B62B01B7052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E5BC21-33F5-4188-B94B-82CA3000E859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E5BC21-33F5-4188-B94B-82CA3000E859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E5BC21-33F5-4188-B94B-82CA3000E859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E5BC21-33F5-4188-B94B-82CA3000E859}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14DB39ED-3AF8-4A46-9A45-F6CDF68E345B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14DB39ED-3AF8-4A46-9A45-F6CDF68E345B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14DB39ED-3AF8-4A46-9A45-F6CDF68E345B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14DB39ED-3AF8-4A46-9A45-F6CDF68E345B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5B9AF39-678B-4BD4-887D-842F40A3646A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B9AF39-678B-4BD4-887D-842F40A3646A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B9AF39-678B-4BD4-887D-842F40A3646A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B9AF39-678B-4BD4-887D-842F40A3646A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
