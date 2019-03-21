@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=3.1.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.3.1.3\lib\net452\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\IUserService.cs" />
     <Compile Include="Security\SessionService.cs" />
+    <Compile Include="Security\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ASP.NET-Web-API-2.DataAccess\ASP.NET-Web-API-2.DataAccess.csproj">
@@ -53,10 +58,9 @@
       <Project>{42E5BC21-33F5-4188-B94B-82CA3000E859}</Project>
       <Name>ASP.NET-Web-API-2.DataModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ASP.NET-Web-API-2.SecurityUtils\ASP.NET-Web-API-2.SecurityUtils.csproj">
-      <Project>{B5B9AF39-678B-4BD4-887D-842F40A3646A}</Project>
-      <Name>ASP.NET-Web-API-2.SecurityUtils</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

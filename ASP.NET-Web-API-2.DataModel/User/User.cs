@@ -17,6 +17,11 @@ namespace ASP.NET_Web_API_2.DataModel.User
             
         }
 
+        public User(string userName)
+        {
+            UserName = userName;
+        }
+
         public User(DataRow dataRow)
         {
             UserName = dataRow.GetValue("GOT_USER_USERNAME");

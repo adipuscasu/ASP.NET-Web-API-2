@@ -7,7 +7,7 @@ namespace ASP.NET_Web_API_2.DataAccess.Security
         public Session Login(DataModel.User.User user)
         {
             var session = new Session();
-
+            return session;
         }
     }
 }
