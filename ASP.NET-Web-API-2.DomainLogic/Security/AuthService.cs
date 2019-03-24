@@ -4,11 +4,11 @@ using ASP.NET_Web_API_2.DataModel.User;
 
 namespace ASP.NET_Web_API_2.DomainLogic.Security
 {
-    public class UserService: IUserService
+    public class AuthService: IAuthService
     {
         private readonly UserDao _userDao;
 
-        public UserService(UserDao userDao)
+        public AuthService(UserDao userDao)
         {
             _userDao = userDao;
         }

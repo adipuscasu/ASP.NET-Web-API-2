@@ -4,7 +4,6 @@ using System.Security.Cryptography;
 using System.Security.Policy;
 using ASP.NET_Web_API_2.DataAccess.User;
 using ASP.NET_Web_API_2.DataModel.User;
-using ASP.NET_Web_API_2.SecurityUtils;
 
 namespace ASP.NET_Web_API_2.DomainLogic.Security
 {
@@ -31,12 +30,11 @@ namespace ASP.NET_Web_API_2.DomainLogic.Security
 
                 System.Diagnostics.Debug.WriteLine("AddUser cu valorile : username=" + userName + " password=" + password);
                 var rng = new RNGCryptoServiceProvider();
-                var salt = HashUtils.GenerateRandomSalt(rng, 16);
-                string hashedPass = HashUtils.Get(password, salt);
+                
                 User newUsr = new User();
                 newUsr.UserName = userName;
-                newUsr.Password = hashedPass;
-                newUsr.Salt = salt;
+                newUsr.Password = "";
+                newUsr.Salt = "";
                 return UserDao.SaveUser(user: newUsr);
             }
             catch (Exception e)
