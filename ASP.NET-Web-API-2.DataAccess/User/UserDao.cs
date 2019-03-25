@@ -17,8 +17,7 @@ namespace ASP.NET_Web_API_2.DataAccess.User
         {
             var conn = new SqlConnection(ConnectionString);
             const string sqlCommand = "User_GetByUserName";
-            var cmd = new SqlCommand(sqlCommand, conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            var cmd = new SqlCommand(sqlCommand, conn) {CommandType = CommandType.StoredProcedure};
             var param = new SqlParameter("@userName", SqlDbType.NVarChar) { Value = userName };
             cmd.Parameters.Add(param);
             var user = new DataModel.User.User();
@@ -56,7 +55,8 @@ namespace ASP.NET_Web_API_2.DataAccess.User
 
         public DataModel.User.User SaveUser(DataModel.User.User user)
         {
-            const string sqlCommand = "User_SaveUser @userName = @userName, @password = @password, @salt = @salt";
+            const string sqlCommand = "User_SaveUser";
+                                      //"@userName = @userName, @password = @password, @salt = @salt";
             var parameters = BuildParametersForSaveUser(user);
             var conn = new SqlConnection(ConnectionString);
             using (conn)
