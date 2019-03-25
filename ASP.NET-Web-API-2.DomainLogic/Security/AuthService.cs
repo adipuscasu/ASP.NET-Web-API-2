@@ -15,7 +15,9 @@ namespace ASP.NET_Web_API_2.DomainLogic.Security
         public Task<bool> ValidateCredentials(string userName, string password, out User user)
         {
             user = _userDao.GetByUserName(userName);
-            return Task.FromResult(BCrypt.Net.BCrypt.Verify(password, user.Password));
+            return string.IsNullOrEmpty(user.Password)
+                ? Task.FromResult(false)
+                : Task.FromResult(BCrypt.Net.BCrypt.Verify(password, user.Password));
         }
     }
 }

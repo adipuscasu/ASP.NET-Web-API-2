@@ -15,26 +15,31 @@ namespace ASP.NET_Web_API_2.DataAccess.User
 
         public DataModel.User.User GetByUserName(string userName)
         {
-            const string sqlCommand = "User_GetByUserName @userName = @userName";
-            var user = new DataModel.User.User();
-            var param = new SqlParameter("@userName", SqlDbType.NVarChar) { Value = userName };
-            var parameters = new List<SqlParameter> { param };
-            var dataTable = new DataTable();
             var conn = new SqlConnection(ConnectionString);
+            const string sqlCommand = "User_GetByUserName";
+            var cmd = new SqlCommand(sqlCommand, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            var param = new SqlParameter("@userName", SqlDbType.NVarChar) { Value = userName };
+            cmd.Parameters.Add(param);
+            var user = new DataModel.User.User();
+            var dataTable = new DataTable();
             using (conn)
             {
                 try
                 {
                     conn.Open();
-                    var cmdContainer = new CommandContainer(sqlCommand, conn);
-                    var cmd = cmdContainer.BuildCommandStoredProcedure(parameters);
+                    //var cmd = cmdContainer.BuildCommandStoredProcedure(parameters);
                     using (cmd)
                     {
                         using (var da = new SqlDataAdapter(cmd))
                         {
                             da.Fill(dataTable);
-                            var dataRow = dataTable.Rows[0];
-                            user = new DataModel.User.User(dataRow);
+                            if (dataTable.Rows.Count > 0)
+                            {
+                                var dataRow = dataTable.Rows[0];
+                                user = new DataModel.User.User(dataRow);
+                            }
+                            
                         }
                     }
 

@@ -8,19 +8,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_Web_API_2.Controllers
 {
-    [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     
     public class AuthController : ControllerBase
     {
-        private IAuthService _authService;
+        private readonly IAuthService _authService;
 
         public AuthController(IAuthService authService)
         {
             _authService = authService;
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpPost]
+        [HttpPost]
         
         [ResponseType(typeof(User))]
         public async Task<ActionResult> Login([System.Web.Http.FromBody] LogIn logIn)
@@ -36,7 +36,7 @@ namespace ASP.NET_Web_API_2.Controllers
             return test? (ActionResult) Ok(authUser) : NotFound();
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpGet]
+        [HttpGet]
         public ActionResult<string> GetTest()
         {
             return "test";
