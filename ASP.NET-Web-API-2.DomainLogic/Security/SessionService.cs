@@ -2,6 +2,7 @@
 using System.Net;
 using System.Security.Cryptography;
 using System.Security.Policy;
+using System.Threading.Tasks;
 using ASP.NET_Web_API_2.DataAccess.User;
 using ASP.NET_Web_API_2.DataModel.User;
 
@@ -21,7 +22,7 @@ namespace ASP.NET_Web_API_2.DomainLogic.Security
             _userDao = userDao;
         }
 
-        public User AddUser(string userName, string password)
+        public async Task AddUser(string userName, string password)
         {
             
             try
@@ -35,7 +36,7 @@ namespace ASP.NET_Web_API_2.DomainLogic.Security
                 newUsr.UserName = userName;
                 newUsr.Password = "";
                 newUsr.Salt = "";
-                return UserDao.SaveUser(user: newUsr);
+                await UserDao.SaveUser(user: newUsr);
             }
             catch (Exception e)
             {

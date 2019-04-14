@@ -1,4 +1,5 @@
 ﻿using ASP.NET_Web_API_2.DataModel.SqlHelper;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,49 +8,32 @@ using System.Threading.Tasks;
 
 namespace ASP.NET_Web_API_2.DataAccess.User
 {
-    public class UserDao : AbstractDao
+    public class UserDao : AbstractDao, IUserStore<DataModel.User.User>
     {
         public bool IsValid(DataModel.User.User user)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Get the user identified by the userName
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
         public DataModel.User.User GetByUserName(string userName)
         {
-            var conn = new SqlConnection(ConnectionString);
             const string sqlCommand = "User_GetByUserName";
-            var cmd = new SqlCommand(sqlCommand, conn) { CommandType = CommandType.StoredProcedure };
-            var param = new SqlParameter("@userName", SqlDbType.NVarChar) { Value = userName };
-            cmd.Parameters.Add(param);
+
+            var parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@userName", SqlDbType.NVarChar, 256) { Value = userName };;
+
             var user = new DataModel.User.User();
-            var dataTable = new DataTable();
-            using (conn)
-            {
-                try
-                {
-                    conn.Open();
-                    //var cmd = cmdContainer.BuildCommandStoredProcedure(parameters);
-                    using (cmd)
-                    {
-                        using (var da = new SqlDataAdapter(cmd))
-                        {
-                            da.Fill(dataTable);
-                            if (dataTable.Rows.Count > 0)
-                            {
-                                var dataRow = dataTable.Rows[0];
-                                user = new DataModel.User.User(dataRow);
-                            }
+            var dataTable = FetchDataTable(sqlCommand, parameters);
 
-                        }
-                    }
+            if (dataTable.Rows.Count <= 0) return user;
 
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-
-            }
+            var dataRow = dataTable.Rows[0];
+            user = new DataModel.User.User(dataRow);
 
             return user;
         }
@@ -120,5 +104,34 @@ namespace ASP.NET_Web_API_2.DataAccess.User
             return parameters;
         }
 
+        public Task CreateAsync(DataModel.User.User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(DataModel.User.User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(DataModel.User.User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<DataModel.User.User> FindByIdAsync(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<DataModel.User.User> FindByNameAsync(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

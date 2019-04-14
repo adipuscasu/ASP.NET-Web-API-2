@@ -20,8 +20,7 @@ namespace ASP.NET_Web_API_2.Controllers
             _authService = authService;
         }
 
-        [HttpPost]
-        
+        [HttpPost]        
         [ResponseType(typeof(User))]
         public async Task<ActionResult> Login([System.Web.Http.FromBody] LogIn logIn)
         {

@@ -49,7 +49,7 @@
     <Compile Include="Security\IUserService.cs" />
     <Compile Include="Security\SessionService.cs" />
     <Compile Include="Security\AuthService.cs" />
-    <Compile Include="Security\UserService.cs" />
+    <Compile Include="Security\UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ASP.NET-Web-API-2.DataAccess\ASP.NET-Web-API-2.DataAccess.csproj">

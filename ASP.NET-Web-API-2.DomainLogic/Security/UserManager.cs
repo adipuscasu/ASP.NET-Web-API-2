@@ -4,13 +4,15 @@ using ASP.NET_Web_API_2.DataModel.User;
 
 namespace ASP.NET_Web_API_2.DomainLogic.Security
 {
-    public class UserService: IUserService
+    public class UserManager: IUserService
     {
-        
-        public UserService()
+        private readonly UserDao _userDao;
+
+        public UserManager(UserDao userDao)
         {
-            
+            _userDao = userDao;
         }
+
         public Task SaveUser(User user)
         {
             return null;
